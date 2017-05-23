@@ -7,7 +7,7 @@ library(dplyr)
 library(purrr)
 
 
-framework <- read_feather(file.path(getwd(), "data", "framework.feather"))
+framework <- readRDS(file.path("data", "framework.rds"))
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output, session) {
