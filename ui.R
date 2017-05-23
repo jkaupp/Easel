@@ -2,8 +2,8 @@ library(shiny)
 library(shinyAce)
 
 shinyUI(fluidPage(
-  includeCSS("normalize.css"),
-  includeCSS("skeleton.css"),
+  includeCSS(file.path("css", "normalize.css")),
+  includeCSS(file.path("css", "skeleton.css")),
 
   # Application title
   titlePanel("Easel: Supporting Educational Data Visualization"),

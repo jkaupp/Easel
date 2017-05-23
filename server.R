@@ -3,15 +3,17 @@ library(ggplot2)
 library(shinyjs)
 library(shinyAce)
 library(feather)
+library(dplyr)
+library(purrr)
 
-framework <- read_feather("framework.feather")
+
+framework <- read_feather(file.path(getwd(), "data", "framework.feather"))
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output, session) {
 
      plot_flag <- reactiveVal(FALSE)
      level_flag <- reactiveVal()
-     selection_flag <- reactiveVal()
 
      output$level_two <- renderUI({
 
@@ -109,7 +111,7 @@ shinyServer(function(input, output, session) {
 
         plot_data <- sprintf("%s.R", input$level_three)
 
-        plot <- source(plot_data, local = TRUE)
+        plot <- source(file.path("plots", plot_data), local = TRUE)
 
         print(plot$value)
       }}
@@ -126,7 +128,7 @@ shinyServer(function(input, output, session) {
          code <- sprintf("%s.R", input$level_three)
 
           list(tags$h2("Code"), aceEditor("code",
-                    value = paste(readLines(code), collapse = "\n"),
+                    value = paste(readLines(file.path("plots", code)), collapse = "\n"),
                     mode = "r",
                     readOnly = TRUE,
                     height = "150px"))
@@ -143,7 +145,7 @@ shinyServer(function(input, output, session) {
 
           md_file <- sprintf("%s.md", input$level_three)
 
-          includeMarkdown(md_file)
+          includeMarkdown(file.path("data", md_file))
 
         }}
 
