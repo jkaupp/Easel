@@ -5,6 +5,7 @@ packrat/src/
 # History files
 .Rhistory
 .Rapp.history
+/R
 
 # Session Data files
 .RData
