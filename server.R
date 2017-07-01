@@ -127,6 +127,8 @@ shinyServer(function(input, output, session) {
 
          code <- sprintf("%s.R", input$level_three)
 
+
+
           list(tags$h2("Code"), aceEditor("code",
                     value = paste(readLines(file.path("plots", code)), collapse = "\n"),
                     mode = "r",
