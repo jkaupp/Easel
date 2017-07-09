@@ -12,21 +12,22 @@ shinyUI(fluidPage(
   sidebarLayout(
     sidebarPanel(width = 3,
        selectInput("level_one",
-                   "Are you looking at data from students or questions regarding curriculum?",
-                   list("", "Students" = "students", "Curriculum" = "curriculum")),
+                   "Do you have some idea of what you are looking for or just have data?",
+                   list("", "I have some idea of what I am looking for" = "G1", "I just have data" = "G2")),
        uiOutput("level_two"),
        uiOutput("level_three"),
-       uiOutput("level_four")
+       uiOutput("level_four"),
+       uiOutput("level_five")
     ),
 
 
     # Show a plot of the generated distribution
-    mainPanel(
-      fluidRow(column(12, list(uiOutput("plot_title"), plotOutput("chart")))),
-      fluidRow(column(6, htmlOutput("code_output")),
-               column(6, uiOutput("desc")))
+    mainPanel(tabsetPanel(
+      tabPanel("Plot", plotOutput("chart")),
+      tabPanel("Code", htmlOutput("code_output")),
+      tabPanel("Description", uiOutput("desc"))
+      )
 
-
-    )
+  )
   )
 ))
