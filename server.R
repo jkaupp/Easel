@@ -209,7 +209,7 @@ shinyServer(function(input, output, session) {
                     value = paste(readLines(file.path("plots", code)), collapse = "\n"),
                     mode = "r",
                     readOnly = TRUE,
-                    height = "150px"))
+                    height = "600px"))
         }
       }
     })
