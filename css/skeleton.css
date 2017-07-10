@@ -25,6 +25,55 @@
 - Media Queries
 */
 
+/* Custom CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+
+#loading-content {
+  position: absolute;
+  background: #000000;
+  opacity: 0.9;
+  z-index: 100;
+  left: 0;
+  right: 0;
+  height: 100%;
+  text-align: center;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+  font-family: "HelveticaNeue", "Helvetica Neue";
+  font-weight: bold;
+}
+
+#sidebar {
+  background-color: #FFFFFF;
+  border: 0;
+  box-shadow 0;
+  border-radius: 0;
+ -webkit-box-shadow: inset 0 0 0 rgba(0,0,0,.05);
+}
+
+.header {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  background-color: #FFFFFF
+}
+
+.title {
+   margin-top: 10px; /*Adds 100 pixels between this div and the one above it*/
+   margin-bottom: 10px; /*Adds 50 pixels between this div and the one below it*/
+   font-family: "Permanent Marker";
+   font-size: 6rem;
+}
+
+.subtitle {
+   margin-top: 10px; /*Adds 100 pixels between this div and the one above it*/
+   margin-bottom: 10px; /*Adds 50 pixels between this div and the one below it*/
+   font-family: "Raleway";
+   font-size: 4rem;
+}
 
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

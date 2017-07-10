@@ -3,11 +3,8 @@ library(ggplot2)
 library(googlesheets)
 library(shinyjs)
 library(shinyAce)
-library(feather)
 library(dplyr)
 library(purrr)
-
-# framework2 <- readRDS(file.path("data", "framework.rds"))
 
 framework <- gs_title("(17-06-20)DN") %>%
   gs_read(ws = "application")
@@ -234,19 +231,8 @@ shinyServer(function(input, output, session) {
       }
     })
 
-    # output$plot_title <- renderUI({
-    #
-    #   level <- switch(level_flag(), "level_one",
-    #                   "level_two",
-    #                   "level_three",
-    #                   "level_four",
-    #                   "level_five")
-    #
-    #     if (plot_flag() & input[[level]] != "") {
-    #
-    #       tags$h2(sprintf("%s Chart", tools::toTitleCase(input[[level]])))
-    #
-    #     }
-    #
-    # })
+
+    hide(id = "loading-content", anim = TRUE, animType = "fade")
+    show("app-content")
+
 })
