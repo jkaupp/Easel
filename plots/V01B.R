@@ -1,4 +1,4 @@
-Course <- readRDS("/Users/Ajay/Google Drive/Graduate School/Thesis/Toolkit/Data/Random/CourseEnrollment.rds")
+Course <- readRDS(file.path("data", "V01A.rds"))
 
 # Calculate proportional enrollment in each course
 Course$Group_prop <- Course$Group_took/30

@@ -1,8 +1,9 @@
-Course <- readRDS(file.path("data", "Q01A1.rds"))
+Course <- readRDS(file.path("data", "V01A.rds"))
 
 # Calculate proportional enrollment in each course
 # Create new names for each course year
 Course <- Course %>%
+  mutate_if(is.numeric,  funs(abs)) %>%
   mutate(Group_prop = Group_took/30,
          Total_prop = Total_took/84,
          year = factor(year, 2:4, c("Second Year","Third Year","Fourth Year"))) %>%
