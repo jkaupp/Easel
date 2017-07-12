@@ -7,8 +7,6 @@ library(dplyr)
 library(purrr)
 
 
-
-
 shinyUI(
   tagList(
     useShinyjs(),
@@ -33,7 +31,7 @@ shinyUI(
    tabPanel("Instructions",
             mainPanel(includeMarkdown(file.path("data", "instructions.md"))), icon = icon("map-o")),
    tabPanel("Easel",
-      # Sidebar with a slider input for number of bins
+
       sidebarLayout(
         sidebarPanel(id = "sidebar", width = 3,
                      selectInput("level_one",
@@ -44,12 +42,13 @@ shinyUI(
                      uiOutput("level_four"),
                      uiOutput("level_five"),
                      uiOutput("level_six"),
-                     uiOutput("level_seven")
+                     uiOutput("level_seven"),
+                     actionButton("reset", "Reset Choices")
         ),
 
 
-        # Show a plot of the generated distribution
-        mainPanel(tabsetPanel(
+
+        mainPanel(tabsetPanel(id = "outputs",
           tabPanel("Plot", list(plotOutput("chart"), uiOutput("desc"))),
           tabPanel("Code", htmlOutput("code_output")),
           tabPanel("Data", DT::dataTableOutput("data"))

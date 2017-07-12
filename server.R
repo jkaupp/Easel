@@ -13,8 +13,15 @@ framework <- gs_key("1PF3TLyzURiaRKnllkrWpiQQfpQ1hBxK0gR8AaLKZEKE") %>%
 # Define server logic required to draw a histogram
 shinyServer(function(input, output, session) {
 
+  observeEvent(input$reset, {
+    reset("sidebar")
+    hide("outputs")
+  })
+
+
      plot_flag <- reactiveVal(FALSE)
      level_flag <- reactiveVal(1)
+     hide("outputs")
 
      output$level_two <- renderUI({
 
@@ -262,6 +269,8 @@ shinyServer(function(input, output, session) {
 
       if (plot_flag() & input[[level]] != "") {
 
+        show("outputs")
+
         plot_data <- sprintf("%s.R", input[[level]])
 
         plot <- source(file.path("plots", plot_data), local = TRUE)
@@ -313,7 +322,7 @@ shinyServer(function(input, output, session) {
 
           data <- readRDS(file.path("data", sprintf("%s.rds", input[[level]])))
 
-          DT::datatable(data)
+          DT::datatable(data,options = list(dom = "tp"))
 
 
         }
