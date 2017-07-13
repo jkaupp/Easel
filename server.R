@@ -146,7 +146,7 @@ shinyServer(function(input, output, session) {
 
            q5_data <- filter(framework, level == 5, node_label == input$level_four)
 
-           if (q5_data[["terminal"]] & !plot_flag() ) {
+           if (q5_data[["terminal"]]) {
              plot_flag(TRUE)
            }
 
@@ -180,7 +180,7 @@ shinyServer(function(input, output, session) {
 
        if (!is.null(input$level_five)) {
 
-         if (input$level_five != "" & !plot_flag()) {
+         if (input$level_five != "") {
            level_flag(6)
            q6_data <- filter(framework, level == 6, node_label == input$level_five)
 
@@ -220,7 +220,7 @@ shinyServer(function(input, output, session) {
 
        if (!is.null(input$level_six)) {
 
-         if (input$level_six != "" & !plot_flag()) {
+         if (input$level_six != "") {
            level_flag(7)
 
            q7_data <- filter(framework, level == 7, node_label == input$level_six)
@@ -351,6 +351,8 @@ shinyServer(function(input, output, session) {
       }
     })
 
+
+    output$debug <- renderText(sprintf("Plot Flag = %s\nLevel Flag = %s", plot_flag(), level_flag()))
 
     hide(id = "loading-content", anim = TRUE, animType = "fade")
     show("app-content")
