@@ -16,14 +16,19 @@ shinyServer(function(input, output, session) {
   observeEvent(input$reset, {
     reset("sidebar")
     hide("outputs")
+    level_flag(1)
+    plot_flag(FALSE)
   })
 
 
      plot_flag <- reactiveVal(FALSE)
      level_flag <- reactiveVal(1)
+
      hide("outputs")
 
      output$level_two <- renderUI({
+
+       if (isolate(plot_flag()) == FALSE) {
 
        if (input$level_one != "") {
 
@@ -56,14 +61,16 @@ shinyServer(function(input, output, session) {
                    options)
 
        }
-     })
+     }
+       })
 
      output$level_three <- renderUI({
 
+       if (isolate(plot_flag()) == FALSE) {
 
        if (!is.null(input$level_two)) {
 
-         if (input$level_two != "") {
+         if (input$level_two != "" ) {
            level_flag(3)
 
          q3_data <- filter(framework, level == 3, node_label == input[["level_two"]])
@@ -93,12 +100,13 @@ shinyServer(function(input, output, session) {
                      unique(q3_data$description),
                      options) }
        }
+       }
      })
 
 
      output$level_four <- renderUI({
 
-
+       if (isolate(plot_flag()) == FALSE) {
 
        if (!is.null(input$level_three)) {
 
@@ -134,10 +142,12 @@ shinyServer(function(input, output, session) {
 
            }
        }
+       }
      })
 
      output$level_five <- renderUI({
 
+       if (isolate(plot_flag()) == FALSE) {
 
        if (!is.null(input$level_four)) {
 
@@ -174,9 +184,12 @@ shinyServer(function(input, output, session) {
 
          }
        }
+       }
      })
 
      output$level_six <- renderUI({
+
+       if (isolate(plot_flag()) == FALSE) {
 
        if (!is.null(input$level_five)) {
 
@@ -212,11 +225,12 @@ shinyServer(function(input, output, session) {
 
          }
        }
+       }
      })
 
      output$level_seven <- renderUI({
 
-
+       if (isolate(plot_flag()) == FALSE) {
 
        if (!is.null(input$level_six)) {
 
@@ -252,6 +266,7 @@ shinyServer(function(input, output, session) {
 
 
          }
+       }
        }
      })
 

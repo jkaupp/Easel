@@ -34,7 +34,7 @@ shinyUI(
 
       sidebarLayout(
         sidebarPanel(id = "sidebar", width = 3,
-                     textOutput("debug"),
+                     #textOutput("debug"),
                      selectInput("level_one",
                                  "Do you have some idea of what you are looking for or just have data?",
                                  list("", "I have some idea of what I am looking for" = "G1", "I just have data" = "G2")),
