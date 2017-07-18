@@ -1,11 +1,18 @@
-# Introduction to Easel
+# About Easel
+Data visualization can be a powerful tool for analyzing and communicating data. However, the overwhelming diversity of options for visualization make it difficult to know how to most effectively visualize data given a specific task. Easel, a visualization recommendation system, was built in response to this problem, specifically for university educators and education support staff looking to improve their visualization techniques of educational data. Its purpose is to guide you towards well-formed questions regarding your educational data, and provide recommendations for visualizations that will help answer those questions.
 
-Lorem ipsum dolor sit amet, ut eleifend nostra vel mi, sit justo lorem lectus, ac accumsan vitae integer mauris vestibulum diam. Magna voluptatum morbi accumsan suscipit mauris quis, cum nec curabitur nostra pede hendrerit, et mauris, sollicitudin hendrerit, lorem arcu turpis sodales purus adipiscing. Eget amet mauris ligula. Luctus egestas consectetuer elit cras vivamus natoque, vitae euismod integer dolor vitae, non erat vitae interdum amet. Velit sit, nam eu, donec in.
+The recommended visualizations were created using a design processes and principles outlined in visualization literature, largely by [[Munzer]]. We repurposed a visualization selection methodology for the context of education, which can be found by clicking the Selection Process option above along with examples of its usage.
 
-Tincidunt lacinia risus aliquam. Leo at nunc eget. Quam sem nullam, eu justo rutrum accumsan arcu faucibus, turpis justo mattis tellus eleifend congue, ipsum molestie vestibulum. Nec nunc sem justo blandit feugiat est, iaculis vel, egestas ligula augue. Non elit at, pretium neque ut morbi etiam augue a. Molestie fusce, sit vel ipsum vestibulum, orci sit donec et lacus. Augue tortor morbi aenean, diam vulputate, ut congue ridiculus sed urna eu nibh.
 
-Interdum pellentesque morbi nibh, laoreet mi dui nam vitae quam, ultricies vel vel suspendisse cubilia arcu. Maecenas commodo ad mauris etiam sed tincidunt, egestas nostra mauris ipsum volutpat commodo, non dignissim. Tellus amet elit pretium bibendum, nunc aenean sed. Sed nonummy, posuere amet, ipsum ultrices tincidunt aliquam nec, mollis nullam sit consequat dolor. Pretium tellus eget, sit justo sapien magna. Suspendisse ridiculus donec sed tempus.
+# Easel Instructions 
+Click the Easel button above to navigate to the Visualization Recommendation System. Through research, we were able to gather a set of common data-questions that educators were looking to have answered with educational data. The following prompts will guide you towards a specifically worded data-question, and the system will subsequently provide visualization recommendations and a description of how to interpret it and why we are recommending for that data-question. Additionally, we provide sample R code for how to create it and let you see the sample data that was used to build it.
 
-# How to use Easel
-Justo vel vel aliquet, fringilla quis integer risus rutrum senectus, platea itaque elit tortor pede id, in eros lacus sagittis, sed adipiscing metus orci placerat diam quis. Non et porta amet orci, eget a a quisque metus vivamus eu. Vestibulum vestibulum sit vel lacinia vulputate massa, vestibulum velit sit integer bibendum sed. Integer mollis a ut ante odio, porttitor mi aliquam odio elit purus fringilla, vitae non in faucibus, vehicula nulla vel turpis convallis aenean vestibulum. Nulla pulvinar ornare justo vivamus, ante eget mattis cum accumsan et massa, sit non vulputate interdum, integer vestibulum fermentum nulla ultrices, suspendisse donec. Maecenas integer sollicitudin lorem vitae, ipsum morbi, elit pretium porta, per nam augue in lacus integer. Neque risus et felis eu fames, enim in elementum, blandit sollicitudin, sagittis ut arcu a ullamcorper viverra, velit curabitur. Vel ut mollis aliquam arcu ipsum dolor, quis non vivamus sed condimentum, in convallis auctor nunc quis nunc, eu curabitur egestas aenean est tellus, est ipsum amet vivamus ligula.
+If none of the provided questions suit your needs, you can design your own visualization using the process by which these recommended visualizations were chosen. You can find it by clicking the Selection Process option above. 
 
+The recommendations we provide are only meant to be an initial step, to broaden the scope of visualizations that are being considered in the educational space. We do provide example code, but creating a visualization for your specific data set and purpose will require an understanding of the available data and what software tools you use to create visualizations. The examples we provide are made using the statistical language R. Below, you can find resources on learning R and how to create digital visualizations with the provided examples.
+
+# R Resources
+[[R for Data Science]]
+[[GG Plot]]
+[[Tidyverse]]
+[[R Tutorial]]
