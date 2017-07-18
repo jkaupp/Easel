@@ -57,8 +57,8 @@ shinyUI(
         )
       ), icon = icon("paint-brush")
     ),
-  tabPanel("About Easel", includeMarkdown(file.path("data", "about.md")), icon = icon("question-circle-o"))
-
+  tabPanel("Selection Process", includeMarkdown(file.path("data", "selection.md")), icon = icon("clipboard"))
+  
 
 )
     )
