@@ -22,5 +22,5 @@ g <-ggplot(PlotData_L, aes(x = variable, y = Grade, group = Student_ID)) +
   labs(x = NULL)
 
 plot(g)
-#Interactive Plot
-ggplotly(g, tooltip = c("Student_ID","Grade"))
+#Interactive Plot:
+#ggplotly(g, tooltip = c("Student_ID","Grade"))
