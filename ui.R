@@ -58,7 +58,7 @@ shinyUI(
       ), icon = icon("paint-brush")
     ),
   tabPanel("Selection Process", includeMarkdown(file.path("data", "selection.md")), icon = icon("clipboard"))
-  
+
 
 )
     )

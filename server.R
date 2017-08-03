@@ -15,6 +15,20 @@ shinyServer(function(input, output, session) {
 
   observeEvent(input$reset, {
     reset("sidebar")
+    enable("level_one")
+    enable("level_two")
+    enable("level_three")
+    enable("level_four")
+    enable("level_five")
+    enable("level_six")
+    enable("level_seven")
+    reset("level_one")
+    reset("level_two")
+    reset("level_three")
+    reset("level_four")
+    reset("level_five")
+    reset("level_six")
+    reset("level_seven")
     hide("outputs")
     level_flag(1)
     plot_flag(FALSE)
@@ -32,6 +46,7 @@ shinyServer(function(input, output, session) {
 
        if (input$level_one != "") {
 
+         disable("level_one")
          level_flag(2)
          q2_data <- filter(framework, level == 2, node_label == input$level_one)
 
@@ -71,6 +86,7 @@ shinyServer(function(input, output, session) {
        if (!is.null(input$level_two)) {
 
          if (input$level_two != "" ) {
+           disable("level_two")
            level_flag(3)
 
          q3_data <- filter(framework, level == 3, node_label == input[["level_two"]])
@@ -111,6 +127,7 @@ shinyServer(function(input, output, session) {
        if (!is.null(input$level_three)) {
 
          if (input$level_three != "") {
+           disable("level_three")
            level_flag(4)
            q4_data <- filter(framework, level == 4, node_label == input$level_three)
 
@@ -152,6 +169,7 @@ shinyServer(function(input, output, session) {
        if (!is.null(input$level_four)) {
 
          if (input$level_four != "") {
+           disable("level_four")
            level_flag(5)
 
            q5_data <- filter(framework, level == 5, node_label == input$level_four)
@@ -194,6 +212,7 @@ shinyServer(function(input, output, session) {
        if (!is.null(input$level_five)) {
 
          if (input$level_five != "") {
+           disable("level_five")
            level_flag(6)
            q6_data <- filter(framework, level == 6, node_label == input$level_five)
 
@@ -235,6 +254,7 @@ shinyServer(function(input, output, session) {
        if (!is.null(input$level_six)) {
 
          if (input$level_six != "") {
+           disable("level_six")
            level_flag(7)
 
            q7_data <- filter(framework, level == 7, node_label == input$level_six)
