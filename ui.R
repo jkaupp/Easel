@@ -5,6 +5,7 @@ library(ggplot2)
 library(googlesheets)
 library(dplyr)
 library(purrr)
+library(reshape2)
 
 
 shinyUI(
@@ -58,7 +59,7 @@ shinyUI(
       ), icon = icon("paint-brush")
     ),
   tabPanel("Selection Process", includeMarkdown(file.path("data", "selection.md")), icon = icon("clipboard"))
-  
+
 
 )
     )

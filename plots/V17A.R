@@ -23,7 +23,7 @@ g <- ggplot() +
   geom_col(BEd, mapping = aes(x = Bed_option, y = avg_grade, fill = nstudents)) +
   geom_col(Program, mapping = aes(x = program, y = avg_grade, fill = nstudents)) +
   geom_hline(yintercept = grand_mean, color="red") + 
-  labs(x = "Bachelor of Education Option", y = "Average Grade", fill = "Number of Students") + 
+  labs(x = "Academic Program and Bachelor of Education Option", y = "Average Grade", fill = "Number of Students") + 
   theme(legend.position = "bottom")
 
 plot(g)
