@@ -21,6 +21,6 @@ g <- ggplot(PlotData_L, aes(x = Student_Rating, y = value, fill=variable)) +
   facet_wrap(~Rated_Student, nrow = 1) + # Have chart for each team rater
   scale_fill_manual(guide = FALSE, name = NULL, values=c("grey","#D55E00","#009E73")) + # Use grey for neutral, red for negative, and green for positive
   scale_size_continuous(guide = FALSE, limits=c(0,1)) + # Controls border around bars to show self-ratings
-  labs(x = "Student Rating ______", y = "Rating")
+  labs(x = "Being rated by", y = "Rating")
 
 plot(g)
