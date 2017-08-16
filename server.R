@@ -107,7 +107,7 @@ shinyServer(function(input, output, session) {
            disable("level_two")
            level_flag(3)
 
-         q3_data <- filter(framework, level == 3, node_label == input[["level_two"]])
+           q3_data <- filter(framework, level == 3, node_label == input[["level_two"]])
 
          if (q3_data[["terminal"]]) {
            plot_flag(TRUE)
@@ -145,9 +145,12 @@ shinyServer(function(input, output, session) {
        if (!is.null(input$level_three)) {
 
          if (input$level_three != "") {
-           disable("level_three")
+
+            disable("level_three")
+
            level_flag(4)
-           q4_data <- filter(framework, level == 4, node_label == input$level_three)
+
+           q4_data <- filter(framework, level == 4, node_label == input[["level_three"]])
 
            if (q4_data[["terminal"]]) {
              plot_flag(TRUE)
@@ -190,7 +193,7 @@ shinyServer(function(input, output, session) {
            disable("level_four")
            level_flag(5)
 
-           q5_data <- filter(framework, level == 5, node_label == input$level_four)
+           q5_data <- filter(framework, level == 5, node_label == input[["level_four"]])
 
            if (q5_data[["terminal"]]) {
              plot_flag(TRUE)
@@ -232,7 +235,7 @@ shinyServer(function(input, output, session) {
          if (input$level_five != "") {
            disable("level_five")
            level_flag(6)
-           q6_data <- filter(framework, level == 6, node_label == input$level_five)
+           q6_data <- filter(framework, level == 6, node_label == input[["level_five"]])
 
            if (q6_data[["terminal"]]) {
              plot_flag(TRUE)
@@ -275,7 +278,7 @@ shinyServer(function(input, output, session) {
            disable("level_six")
            level_flag(7)
 
-           q7_data <- filter(framework, level == 7, node_label == input$level_six)
+           q7_data <- filter(framework, level == 7, node_label == input[["level_six"]])
 
            if (q7_data[["terminal"]]) {
              plot_flag(TRUE)
@@ -328,7 +331,7 @@ shinyServer(function(input, output, session) {
 
         plot <- source(file.path("plots", plot_data), local = TRUE)
 
-        print(plot$value)
+        print(plot[["value"]])
       }
      }
     })
