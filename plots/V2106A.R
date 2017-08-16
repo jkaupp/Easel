@@ -5,11 +5,11 @@
 PlotData <- readRDS(file.path("data", "V2106A.rds"))
 
 # Calculate proportional enrollment in each course
-# Create new names for each course year
+
 PlotData <- PlotData %>%
   mutate(Group_prop = Group_took/30, # Number of students in group
          Total_prop = Total_took/84, # Total number of students in program
-         year = factor(year, 2:4, c("Second Year","Third Year","Fourth Year"))) %>%
+         year = factor(year, 2:4, c("Second Year","Third Year","Fourth Year"))) %>% # Create new names for each course year
   group_by(year) %>%
   mutate(dr1 = row_number())
 
@@ -26,4 +26,6 @@ g <- ggplot(PlotData, aes(x = dr1, y = 1)) +
 
 plot(g)
 
+#Interactive Version: 
+#require(plotly)
 #ggplotly(g, tooltip = c("courses", "Group_prop", "Total_prop"))

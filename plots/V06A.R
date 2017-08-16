@@ -1,10 +1,9 @@
-library(reshape2)
 #Question: Identifying special students from prior course. 
 #Exploration of Extremes
 
 #Get Data
 PlotData <- readRDS(file.path("data", "V06A.rds"))
-PlotData <- PlotData[1:100,]
+PlotData <- PlotData[1:100,] # Pick a section of students to look at
 
 #Transofrm and Derive
 PlotData$Difference <- (PlotData$Current_Course - PlotData$Prior_Course)
@@ -22,5 +21,7 @@ g <-ggplot(PlotData_L, aes(x = variable, y = Grade, group = Student_ID)) +
   labs(x = NULL)
 
 plot(g)
-#Interactive Plot:
+
+#Interactive Plot
+#require(plotly)
 #ggplotly(g, tooltip = c("Student_ID","Grade"))

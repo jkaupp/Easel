@@ -6,6 +6,7 @@ library(dplyr)
 library(purrr)
 library(shinyjs)
 library(DT)
+library(reshape2)
 
 framework <- gs_key("1PF3TLyzURiaRKnllkrWpiQQfpQ1hBxK0gR8AaLKZEKE") %>%
   gs_read(ws = "application")
