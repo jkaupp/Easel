@@ -34,7 +34,7 @@ shinyUI(
    tabPanel("Easel",
 
       sidebarLayout(
-        sidebarPanel(id = "sidebar", width = 3,
+        sidebarPanel(id = "sidebar", width = 4,
                      #textOutput("debug"),
                      selectInput("level_one",
                                  "Which of these scenarios better suits your needs?",
