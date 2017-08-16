@@ -1,4 +1,3 @@
-library(reshape2)
 #Question: Identifying special students from prior course. 
 #Exploration of Extremes
 

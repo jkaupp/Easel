@@ -1,6 +1,9 @@
 #Question: What is the relationship between being in a mutually exclusive group X and a student’s assessment result? 
 #Communication/Exploration of groups withour order
 
+library(grid)
+library(gridExtra)
+
 #Get Data
 PlotData <- readRDS(file.path("data", "V1701A.rds"))
 
@@ -40,6 +43,4 @@ g2 <- ggplot(PlotData, mapping=aes(fill=Academic_Program_F)) +
   facet_wrap(~Academic_Program_F, ncol=1) + 
   labs(x = "Assessment Result", y = "Student Count", fill = "Academic Program")
 
-require(grid)
-require(gridExtra)
 grid.arrange(g1, g2, nrow=1)
