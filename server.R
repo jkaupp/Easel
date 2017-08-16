@@ -39,7 +39,7 @@ shinyServer(function(input, output, session) {
     reset(lvl_label)
     reset(lvl_above_lbl)
 
-    walk(level_above_val:isolate(level_flag()), ~enable(switch(.x, "level_one",
+    walk(lvl_above_val:isolate(level_flag()), ~enable(switch(.x, "level_one",
                                        "level_two",
                                        "level_three",
                                        "level_four",
