@@ -15,23 +15,40 @@ framework <- gs_key("1PF3TLyzURiaRKnllkrWpiQQfpQ1hBxK0gR8AaLKZEKE") %>%
 shinyServer(function(input, output, session) {
 
   observeEvent(input$reset, {
-    reset("sidebar")
-    enable("level_one")
-    enable("level_two")
-    enable("level_three")
-    enable("level_four")
-    enable("level_five")
-    enable("level_six")
-    enable("level_seven")
-    reset("level_one")
-    reset("level_two")
-    reset("level_three")
-    reset("level_four")
-    reset("level_five")
-    reset("level_six")
-    reset("level_seven")
+
+    lvl_label <- switch(level_flag(), "level_one",
+                    "level_two",
+                    "level_three",
+                    "level_four",
+                    "level_five",
+                    "level_six",
+                    "level_seven")
+
+    lvl_above_lbl <- switch(level_flag() - 1, "level_one",
+                    "level_two",
+                    "level_three",
+                    "level_four",
+                    "level_five",
+                    "level_six",
+                    "level_seven")
+
+    lvl_above_val <-  isolate(level_flag()) - 1
+
+
+
+    reset(lvl_label)
+    reset(lvl_above_label)
+
+    walk(level_above_val:isolate(level_flag()), ~enable(switch(.x, "level_one",
+                                       "level_two",
+                                       "level_three",
+                                       "level_four",
+                                       "level_five",
+                                       "level_six",
+                                       "level_seven")))
+
     hide("outputs")
-    level_flag(1)
+    level_flag(lvl_above_val)
     plot_flag(FALSE)
   })
 
@@ -303,7 +320,7 @@ shinyServer(function(input, output, session) {
 
       if (!is.null(input[[level]])) {
 
-      if (plot_flag() & input[[level]] != "") {
+      if (isolate(plot_flag()) & input[[level]] != "") {
 
         show("outputs")
 
@@ -329,7 +346,7 @@ shinyServer(function(input, output, session) {
 
       if (!is.null(input[[level]])) {
 
-      if (plot_flag() & input[[level]] != "") {
+      if (isolate(plot_flag()) & input[[level]] != "") {
 
          code <- sprintf("%s.R", input[[level]])
 
@@ -354,7 +371,7 @@ shinyServer(function(input, output, session) {
 
       if (!is.null(input[[level]])) {
 
-      if (plot_flag() & input[[level]] != "") {
+      if (isolate(plot_flag()) & input[[level]] != "") {
 
           data <- readRDS(file.path("data", sprintf("%s.rds", input[[level]])))
 
@@ -377,7 +394,7 @@ shinyServer(function(input, output, session) {
 
       if (!is.null(input[[level]])) {
 
-        if (plot_flag() & input[[level]] != "") {
+        if (isolate(plot_flag()) & input[[level]] != "") {
 
           md_file <- sprintf("%s.md", input[[level]])
 
