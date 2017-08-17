@@ -36,6 +36,7 @@ shinyUI(
       sidebarLayout(
         sidebarPanel(id = "sidebar", width = 4,
                      #textOutput("debug"),
+                     #actionButton("debugToggle", "Toggle This!"),
                      selectInput("level_one",
                                  "Which of these scenarios better suits your needs?",
                                  list("", "I have a general question in mind that I would like help answering with a visualization" = "G1", "I have data and would like to see options for visualization" = "G2")),
@@ -45,7 +46,7 @@ shinyUI(
                      uiOutput("level_five"),
                      uiOutput("level_six"),
                      uiOutput("level_seven"),
-                     actionButton("reset", "Undo Last Selection")
+                     actionButton("reset", "Undo Last Selection", icon = icon("undo"))
         ),
 
 
