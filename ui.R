@@ -45,7 +45,7 @@ shinyUI(
                      uiOutput("level_five"),
                      uiOutput("level_six"),
                      uiOutput("level_seven"),
-                     actionButton("reset", "Reset Choices")
+                     actionButton("reset", "Undo Last Selection")
         ),
 
 
