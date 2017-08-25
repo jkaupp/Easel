@@ -35,7 +35,7 @@ shinyUI(
 
       sidebarLayout(
         sidebarPanel(id = "sidebar", width = 4,
-                     #textOutput("debug"),
+                     textOutput("debug"),
                      #actionButton("debugToggle", "Toggle This!"),
                      selectInput("level_one",
                                  "Which of these scenarios better suits your needs?",

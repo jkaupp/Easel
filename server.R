@@ -8,15 +8,24 @@ library(shinyjs)
 library(DT)
 library(reshape2)
 
+source("functions.R")
+
 framework <- gs_key("1PF3TLyzURiaRKnllkrWpiQQfpQ1hBxK0gR8AaLKZEKE") %>%
   gs_read(ws = "application")
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output, session) {
 
+  # On load:
+  level_flag <- reactiveVal(1)
+
+  plot_flag <- reactiveVal(TRUE)
+  hide("outputs")
+
   # Undo Button -------------
   observeEvent(input$reset, {
 
+    plot_flag(FALSE)
     # Find label for current level and level above
     lvl_label <- levelLabel(level_flag())
     lvl_above_lbl <- levelLabel(level_flag(), 1)
@@ -31,79 +40,82 @@ shinyServer(function(input, output, session) {
 
     # Change level flag and hide plot renders
     level_flag(lvl_above_val)
-    plot_flag(FALSE)
     hide("outputs")
   })
 
-  # On load:
-  level_flag <- reactiveVal(1)
 
-  plot_flag <- reactiveVal(FALSE)
-  hide("outputs")
+  # Level 2 ----
 
-  # Input Levels ---------------
-  # Level 2
   output$level_two <- renderUI({
     lvl <- 2
     labelAbove <- levelLabel(lvl,1)
 
-    if (isolate(plot_flag()) == FALSE) {
-      if (input[[labelAbove]] != "") {
-        # Disable previous level and change flag
-        disable(labelAbove)
-        level_flag(lvl)
+    if (plot_flag() == TRUE) {
 
-        q2_data <- filter(framework,
-                          level == lvl,
-                          node_label == input[[labelAbove]])
-
-        if (q2_data[["terminal"]]) {
-          plot_flag(TRUE)
-        }
-
-        options <- getOptions(q2_data)
-
-        selectInput("level_two",
-                    unique(q2_data$description),
-                    options)
-      }
-    }
-  })
-
-  # Level 3
-  output$level_three <- renderUI({
-    lvl <- 3
-    labelAbove <- levelLabel(lvl,1)
-    if (isolate(plot_flag()) == FALSE) {
-      if (!is.null(input[[labelAbove]])) {
-        if (input[[labelAbove]] != "" ) {
+        if (input[[labelAbove]] != "") {
+          # Disable previous level and change flag
           disable(labelAbove)
           level_flag(lvl)
 
-          q3_data <- filter(framework,
+          q2_data <- filter(framework,
                             level == lvl,
                             node_label == input[[labelAbove]])
 
-          if (q3_data[["terminal"]]) {
+          if (q2_data[["terminal"]] == TRUE) {
             plot_flag(TRUE)
           }
 
-          options <- getOptions(q3_data)
+          options <- getOptions(q2_data)
 
-          selectInput("level_three",
-                      unique(q3_data$description),
+          selectInput("level_two",
+                      unique(q2_data[["description"]]),
                       options)
+        }
+    }
+  })
+
+  # Level 3 ----
+  output$level_three <- renderUI({
+
+    lvl <- 3
+    labelAbove <- levelLabel(lvl,1)
+
+    if (plot_flag() == FALSE) {
+
+       if (!is.null(input[[labelAbove]])) {
+
+         if (input[[labelAbove]] != "" ) {
+           disable(labelAbove)
+           level_flag(lvl)
+
+           q3_data <- filter(framework,
+                             level == lvl,
+                             node_label == input[[labelAbove]])
+
+           if (q3_data[["terminal"]] == TRUE) {
+             plot_flag(TRUE)
+           }
+
+           options <- getOptions(q3_data)
+
+           selectInput("level_three",
+                       unique(q3_data[["description"]]),
+                       options)
         }
       }
     }
   })
 
-  # Level 4
+  # Level 4 ----
   output$level_four <- renderUI({
+
     lvl <- 4
     labelAbove <- levelLabel(lvl,1)
-    if (isolate(plot_flag()) == FALSE) {
+
+    if (plot_flag() == FALSE) {
+
       if (!is.null(input[[labelAbove]])) {
+
         if (input[[labelAbove]] != "" ) {
           disable(labelAbove)
           level_flag(lvl)
@@ -112,26 +124,31 @@ shinyServer(function(input, output, session) {
                             level == lvl,
                             node_label == input[[labelAbove]])
 
-          if (q4_data[["terminal"]]) {
+          if (q4_data[["terminal"]] == TRUE) {
             plot_flag(TRUE)
           }
 
           options <- getOptions(q4_data)
 
           selectInput("level_four",
-                      unique(q4_data$description),
+                      unique(q4_data[["description"]]),
                       options)
         }
       }
     }
   })
 
-  # Level 5
+  # Level 5 ----
   output$level_five <- renderUI({
-    lvl <- 5
-    labelAbove <- levelLabel(lvl,1)
-    if (isolate(plot_flag()) == FALSE) {
+
+     lvl <- 5
+
+      labelAbove <- levelLabel(lvl,1)
+
+    if (plot_flag() == FALSE) {
+
       if (!is.null(input[[labelAbove]])) {
+
         if (input[[labelAbove]] != "" ) {
           disable(labelAbove)
           level_flag(lvl)
@@ -140,27 +157,30 @@ shinyServer(function(input, output, session) {
                             level == lvl,
                             node_label == input[[labelAbove]])
 
-          if (q5_data[["terminal"]]) {
+          if (q5_data[["terminal"]] == TRUE) {
             plot_flag(TRUE)
           }
 
           options <- getOptions(q5_data)
 
           selectInput("level_five",
-                      unique(q5_data$description),
+                      unique(q5_data[["description"]]),
                       options)
         }
       }
     }
   })
 
-  # Level 6
+  # Level 6 ----
   output$level_six <- renderUI({
     lvl <- 6
     labelAbove <- levelLabel(lvl,1)
-    if (isolate(plot_flag()) == FALSE) {
+
+    if (plot_flag() == FALSE) {
+
       if (!is.null(input[[labelAbove]])) {
-        if (input[[labelAbove]] != "" ) {
+
+         if (input[[labelAbove]] != "" ) {
           disable(labelAbove)
           level_flag(lvl)
 
@@ -168,44 +188,47 @@ shinyServer(function(input, output, session) {
                             level == lvl,
                             node_label == input[[labelAbove]])
 
-          if (q6_data[["terminal"]]) {
+          if (q6_data[["terminal"]] == TRUE) {
             plot_flag(TRUE)
           }
 
           options <- getOptions(q6_data)
 
           selectInput("level_six",
-                      unique(q6_data$description),
+                      unique(q6_data[["description"]]),
                       options)
         }
       }
     }
   })
 
-  # Level 7
+  # Level 7 ----
   output$level_seven <- renderUI({
     lvl <- 7
     labelAbove <- levelLabel(lvl,1)
-    if (isolate(plot_flag()) == FALSE) {
-      if (!is.null(input[[labelAbove]])) {
-        if (input[[labelAbove]] != "" ) {
-          disable(labelAbove)
-          level_flag(lvl)
 
-          q7_data <- filter(framework,
-                            level == lvl,
-                            node_label == input[[labelAbove]])
+     if (plot_flag() == FALSE) {
 
-          if (q7_data[["terminal"]]) {
-            plot_flag(TRUE)
-          }
+         if (!is.null(input[[labelAbove]])) {
 
-          options <- getOptions(q7_data)
+           if (input[[labelAbove]] != "" ) {
+             disable(labelAbove)
+             level_flag(lvl)
 
-          selectInput("level_seven",
-                      unique(q7_data$description),
-                      options)
-        }
+             q7_data <- filter(framework,
+                               level == lvl,
+                               node_label == input[[labelAbove]])
+
+             if (q7_data[["terminal"]] == TRUE) {
+               plot_flag(TRUE)
+             }
+
+             options <- getOptions(q7_data)
+
+             selectInput("level_seven",
+                         unique(q7_data[["description"]]),
+                         options)
+           }
       }
     }
   })
@@ -216,7 +239,7 @@ shinyServer(function(input, output, session) {
 
     level <- levelLabel(level_flag())
 
-    if (checkRender(input[[level]], plot_flag())) {
+    if (checkRender(input[[level]], plot_flag() == TRUE)) {
       show("outputs") # Show tabs
 
       # Find code
@@ -232,7 +255,7 @@ shinyServer(function(input, output, session) {
 
     level <- levelLabel(level_flag())
 
-    if (checkRender(input[[level]], plot_flag())) {
+    if (checkRender(input[[level]], plot_flag() == TRUE)) {
       md_file <- sprintf("%s.md", input[[level]]) # Find code
 
       includeMarkdown(file.path("data", md_file)) # Display description
@@ -244,7 +267,7 @@ shinyServer(function(input, output, session) {
 
     level <- levelLabel(level_flag())
 
-    if (checkRender(input[[level]], plot_flag())) {
+    if (checkRender(input[[level]], plot_flag() == TRUE)) {
       code <- sprintf("%s.R", input[[level]]) # Find code
 
       # Display code
@@ -261,7 +284,7 @@ shinyServer(function(input, output, session) {
 
     level <- levelLabel(level_flag())
 
-    if (checkRender(input[[level]], plot_flag())) {
+    if (checkRender(input[[level]], plot_flag() == TRUE)) {
       data <- readRDS(file.path("data", sprintf("%s.rds", input[[level]]))) # Find data
 
       DT::datatable(data,options = list(dom = "tp")) # Display data
@@ -276,58 +299,7 @@ shinyServer(function(input, output, session) {
   observeEvent(input$debugToggle, {
 
   })
-  output$debug <- renderText(sprintf("Plot Flag = %s\nLevel Flag = %s", plot_flag(), level_flag()))
+  output$debug <- renderText(sprintf("Plot Flag = %s\nLevel Flag = %s", plot_flag, level_flag()))
 
 })
 
-# Level Functions ----------------------
-# Input Level Functions
-levelLabel <- function(lflag, subtractMod = 0) {
- switch(lflag - subtractMod,
-                "level_one",
-                "level_two",
-                "level_three",
-                "level_four",
-                "level_five",
-                "level_six",
-                "level_seven")
-  #Call: levelLabel(level_flag())
-  #  Or: levelLabel(2)
-}
-
-# Check if we should render
-checkRender <- function(inputLevel, pflag) {
-
-  check <- FALSE
-
-  if (!is.null(inputLevel)) {
-    if (isolate(pflag) & inputLevel != "") {
-      check <- TRUE
-    }
-  }
-
-  return(check)
-}
-
-# Get options from framework
-getOptions <- function(q_data) {
-  # Check if its terminal node
-  node_or_chart <- if (!is.na(q_data[["node_targets"]])) {
-    "node_targets"
-  } else {
-    "chart"
-  }
-
- setNames(c("", makeList(q_data,node_or_chart)),
-                      c("", makeList(q_data,"options")))
-}
-
-# Turn node_target and chart into lists
-makeList <- function(q_data, colName) {
-
-    unique(q_data[[colName]]) %>%
-          strsplit(",") %>%
-          flatten() %>%
-          map(trimws)
-
-}
