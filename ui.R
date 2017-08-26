@@ -35,8 +35,7 @@ shinyUI(
 
       sidebarLayout(
         sidebarPanel(id = "sidebar", width = 4,
-                     textOutput("debug"),
-                     #actionButton("debugToggle", "Toggle This!"),
+                     #textOutput("debug"),
                      selectInput("level_one",
                                  "Which of these scenarios better suits your needs?",
                                  list("", "I have a general question in mind that I would like help answering with a visualization" = "G1", "I have data and would like to see options for visualization" = "G2")),
