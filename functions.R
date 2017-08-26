@@ -49,5 +49,3 @@ makeList <- function(q_data, colName) {
     map(trimws)
 
 }
-
-

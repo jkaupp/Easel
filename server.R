@@ -45,18 +45,18 @@ shinyServer(function(input, output, session) {
 
 
   # Level 2 ----
-
   output$level_two <- renderUI({
 
      lvl <- 2
 
     labelAbove <- levelLabel(lvl,1)
 
+    if (!is.null(input[[labelAbove]])) {
     q2_data <- filter(framework,
                       level == lvl,
                       node_label == input[[labelAbove]])
 
-    if (isolate(isolate(plot_flag() == FALSE))) {
+    if (isolate(plot_flag() == FALSE)) {
 
       if (input[[labelAbove]] != "") {
         # Disable previous level and change flag
@@ -71,6 +71,7 @@ shinyServer(function(input, output, session) {
                     unique(q2_data[["description"]]),
                     options)
       }
+    }
     }
   })
 
