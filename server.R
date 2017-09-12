@@ -22,8 +22,17 @@ shinyServer(function(input, output, session) {
   plot_flag <- reactiveVal(FALSE)
   hide("outputs")
 
-  # Undo Button -------------
+
+  # Reset Button ----
   observeEvent(input$reset, {
+    level_flag(1)
+    walk(1:7, ~reset(levelLabel(.x)))
+    walk(1:7, ~enable(levelLabel(.x)))
+  })
+
+
+  # Undo Button -------------
+  observeEvent(input$undo, {
 
     plot_flag(FALSE)
     # Find label for current level and level above
