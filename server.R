@@ -25,11 +25,11 @@ shinyServer(function(input, output, session) {
 
   # Reset Button ----
   observeEvent(input$reset, {
-    plot_flag <- reactiveVal(FALSE)
-    hide("outputs")
+    plot_flag(FALSE)
     level_flag(1)
     walk(1:7, ~reset(levelLabel(.x)))
     walk(1:7, ~enable(levelLabel(.x)))
+    hide("outputs")
   })
 
 
