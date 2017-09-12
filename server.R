@@ -36,6 +36,8 @@ shinyServer(function(input, output, session) {
   # Undo Button -------------
   observeEvent(input$undo, {
 
+    if (isolate(level_flag() > 1)) {
+
     plot_flag(FALSE)
     # Find label for current level and level above
     lvl_label <- levelLabel(level_flag())
@@ -52,6 +54,7 @@ shinyServer(function(input, output, session) {
     # Change level flag and hide plot renders
     level_flag(lvl_above_val)
     hide("outputs")
+    }
   })
 
 
