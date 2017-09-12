@@ -26,6 +26,7 @@ shinyServer(function(input, output, session) {
   # Reset Button ----
   observeEvent(input$reset, {
     level_flag(1)
+    hide("outputs")
     walk(1:7, ~reset(levelLabel(.x)))
     walk(1:7, ~enable(levelLabel(.x)))
   })
@@ -256,9 +257,11 @@ shinyServer(function(input, output, session) {
     level <- levelLabel(level_flag())
 
     if (checkRender(input[[level]], isolate(plot_flag() == TRUE))) {
-      md_file <- sprintf("%s.md", input[[level]]) # Find code
+      # Find code
+      md_file <- sprintf("%s.md", input[[level]])
 
-      includeMarkdown(file.path("data", md_file)) # Display description
+      # Display description
+      includeMarkdown(file.path("data", md_file))
     }
   })
 
@@ -268,7 +271,8 @@ shinyServer(function(input, output, session) {
     level <- levelLabel(level_flag())
 
     if (checkRender(input[[level]], isolate(plot_flag() == TRUE))) {
-      code <- sprintf("%s.R", input[[level]]) # Find code
+      # Find code
+      code <- sprintf("%s.R", input[[level]])
 
       # Display code
       aceEditor("code",
@@ -285,9 +289,11 @@ shinyServer(function(input, output, session) {
     level <- levelLabel(level_flag())
 
     if (checkRender(input[[level]], isolate(plot_flag() == TRUE))) {
-      data <- readRDS(file.path("data", sprintf("%s.rds", input[[level]]))) # Find data
+      # Find data
+      data <- readRDS(file.path("data", sprintf("%s.rds", input[[level]])))
 
-      DT::datatable(data,options = list(dom = "tp")) # Display data
+       # Display data
+      DT::datatable(data,options = list(dom = "tp"))
     }
   })
 
@@ -295,7 +301,7 @@ shinyServer(function(input, output, session) {
   hide(id = "loading-content", anim = TRUE, animType = "fade")
   show("app-content")
 
-  # Debugging
+  # Debugging ----
   observeEvent(input$debugToggle, {
 
   })
