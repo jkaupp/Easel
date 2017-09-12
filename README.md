@@ -6,5 +6,5 @@ Data visualization can be a powerful tool for analyzing and communicating data. 
 
 The recommended visualizations were created using a design processes and principles outlined in visualization literature, largely from [Munzer's Visualization Analysis and Design](http://www.cs.ubc.ca/~tmm/vadbook/). We repurposed a visualization selection methodology for the context of education, which can be found by clicking the Selection Process option above along with examples of its usage.
 
-Easel was built using [Shiny](https://shiny.rstudio.com/), a reactive web-application framework for R.  To view the current (development) version of Easel, please visit [shiny.engineering.queensu.ca/easel](shiny.engineering.queensu.ca/easel)
+Easel was built using [Shiny](https://shiny.rstudio.com/), a reactive web-application framework for R.  To view the current (development) version of Easel, please visit [shiny.engineering.queensu.ca/easel](https://shiny.engineering.queensu.ca/easel)
 
