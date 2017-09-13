@@ -15,7 +15,7 @@ To view the current (development) version of Easel, please visit: [shiny.enginee
 
 The framework underlying Easel was the work of Ajay Sivanand for his  Masters of Applied Science degree at Queen's University in Kingston, Ontario, with Dr. Brian Frank.  This work was graciously funded by the Higher Education Quality Council of Ontario (HEQCO).
 
-The Easel application developed by Dr. Jake Kaupp (Queen's University) 
+The Easel application was collaboratively developed by Dr. Jake Kaupp (Queen's University) building the functional application, with the content aspects of the application being provided by Ajay Sivanand.
 
 # Questions
 
