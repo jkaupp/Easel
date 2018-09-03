@@ -9,7 +9,7 @@ The recommended visualizations were created using a design processes and princip
 
 # Using Easel
 
-To view the current (development) version of Easel, please visit: [shiny.engineering.queensu.ca/easel](https://shiny.engineering.queensu.ca/easel) or using `shiny::runGithub("jkaupp/easel")`
+To view the current (development) version of Easel, please visit: [shiny.engineering.queensu.ca/easel](https://shiny.engineering.queensu.ca/easel) or using `shiny::runGitHub("jkaupp/easel")`
 
 # Development
 
